@@ -1,0 +1,15 @@
+html
+	head
+		title Add name -#{title}
+	body
+		include nav
+		p Add info
+
+		form(method="POST" action ="/form") 
+			input(type="text" placeholder="First Name" name= "InsFirstName")
+			br
+			input(type="text" placeholder="Last Name" name= "InsLastName")
+			br
+			input(type="text" placeholder="E-mail Adress" name= "InsEmail")
+			br
+			input(type="submit" value="submit")

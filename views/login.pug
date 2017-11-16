@@ -1,0 +1,10 @@
+html
+	head
+		title Searchbar -#{title}
+	body
+		include nav
+		p welkom
+
+		form(method="POST" action ="/searchbar") 
+			input(type="text" placeholder="Searchbar" name= "name")
+			input(type="submit" value="submit")
