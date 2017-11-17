@@ -82,7 +82,7 @@ app.get("/nav", (req,res) => {
 })
 
 app.listen(3000, () =>{
-	console.log("listening")
+	console.log("listening to port 3k")
 });
 
 //write file
