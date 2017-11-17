@@ -32,7 +32,7 @@ app.post("/searchbar", function(req,res){
 			} 			
 		} 
 		if (findpers.length == 0){
-		res.redirect("/login?e=Incorrect username or password" ) }	
+		res.redirect("/login?e=Incorrect search" ) }	
 
 		console.log(findpers[0])
 		res.render("found", {findpers:findpers[0]})
