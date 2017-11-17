@@ -32,13 +32,22 @@ app.post("/searchbar", function(req,res){
 			} 			
 		} 
 		if (findpers.length == 0){
-		res.redirect("/login?e=Incorrect username or password" ) }	
+		res.redirect("/login?e=Incorrect search" ) }	
 
 		console.log(findpers[0])
 		res.render("found", {findpers:findpers[0]})
 
 	})
 })
+
+/*app.post("/suggestion", (req, res)=> {
+
+	let suggest = req.body.suggestion
+	console.log("the suggestion", suggest)
+	res.json({status: 200, suggestion: ["Alexandre", "Alex"]})
+
+})
+*/
 
 app.post("/form", function(req,res){
 fs.readFile('users.json', function(err, data){
@@ -84,4 +93,4 @@ app.listen(3000, () =>{
 	console.log("listening")
 });
 
-//write file
+//koppel button aan app, koppel  button aan jquiry, 

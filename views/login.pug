@@ -1,10 +1,25 @@
 html
 	head
+		script(src="https://code.jquery.com/jquery-3.2.1.js"
+			  integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE="
+			  crossorigin="anonymous")
 		title Searchbar -#{title}
 	body
 		include nav
-		p welkom
+		p Search for first name, last name or e-mailadress.
 
 		form(method="POST" action ="/searchbar") 
 			input(type="text" placeholder="Searchbar" name= "name")
 			input(type="submit" value="submit")
+//-
+	script
+//-
+	script.
+			$(document).ready(function() {
+				$.post("http://localhost:3000/suggestion", {suggestion: "Al"}, function(data) {
+				$("h1").html(data.suggestion[0]) 
+					console.log("did you mean", data.suggestion[0])
+					})	
+				}
+
+
