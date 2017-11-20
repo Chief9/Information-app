@@ -40,14 +40,42 @@ app.post("/searchbar", function(req,res){
 	})
 })
 
-/*app.post("/suggestion", (req, res)=> {
+app.post("/login", (req, res)=> {
+	let suggest = req.body.query
+	console.log(suggest)
+		fs.readFile('users.json', function(err,data){
+		if (err) {
+			console.log(error)
+		}  
 
-	let suggest = req.body.suggestion
-	console.log("the suggestion", suggest)
-	res.json({status: 200, suggestion: ["Alexandre", "Alex"]})
+		var users = JSON.parse(data)
+		var seeker = []
+		for (i = 0; i < users.length; ++i) {
+	    	if (users[i].firstname.slice(0, suggest.length) == suggest || users[i].lastname.slice(0, suggest.length) == suggest || users[i].email.slice(0, suggest.length) == suggest) {
+	        	seeker.push(users[i].firstname + " " + users[i].lastname)
+	        	console.log(seeker)
+	       	 }
+		}
+		res.json({status:200, finder: seeker})
+	})
 
 })
-*/
+
+//slice
+//alexandre.slice(0,3)
+// "alexandra".slice(0,suggestion.length)
+
+/*
+		var findpers= []
+		
+		for (var i = 0; i < users.length; i++){
+   			if (suggest == users[i].firstnamex || suggest == users[i].lastname){
+			findpers.push(users[i].firstname)
+			console.log(findpers)*/
+	/*		} 	
+		}
+	}*/
+
 
 app.post("/form", function(req,res){
 fs.readFile('users.json', function(err, data){

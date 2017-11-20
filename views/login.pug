@@ -6,34 +6,38 @@ html
 		title Searchbar -#{title}
 	body
 		include nav
-		p Search for first name, last name or e-mailadress.
+		p Search for first name, last name or e-mailadress (case sensitive).
 
 		form(method="POST" action ="/searchbar") 
-			input(id="autocomplete" type="text" placeholder="Searchbar" name= "suggestion")
+			input(id="autocomplete" type="text" placeholder="Searchbar" name= "name")
 			button(id="search" type="submit" value="submit") Submit
+			h1 Suggestions
+			ul(id = "results")
+
 
 		
+		script.
+			$(document).ready(function(){
+				$("#autocomplete").keyup(function() {
+						var query = $("#autocomplete").val();
+						if(query !='')
+							{ 
+							  $.ajax({
+							  url:"/login",
+							  method:"POST",
+							  type:"JSON",
+							  data:{query:query},
+							  success:function(data)
+							  {
+								$(".lijst").remove()
+								for (var i = 0; i < data.finder.length; i++){
+									$("#results").append("<li class='lijst'>"+ data.finder[i]+ "</li>")
+								}
+							}
+							})
+							}
 
-		//- script.
-		//- 	$(document).ready(function(){
-		//- 		$("autocomplete").click(function() {
-		//- 				let pokemon = $("#autocomplete").val()
-		//- 				console.log("hi",pokemon)
-		//- 				//- $.ajax( {url:"https://pokeapi.co/api/v2/pokemon/"+ pokemon,
-		//- 			 //-         type:"GET",
-		//- 			 //-         dataType:"json",
-		//- 			 //-         crossDomain: true,
-		//- 			 //-         success:function(data, textStatus, jqXHR) {
-		//- 			 //-         	console.log(data)
-		//- 			 //-         	$("#name").html("Name: " + data.name)
-		//- 			 //-         	$("#weight").html("Weight: " + data.weight)
-		//- 			 //-         	$("#pokedex").attr("src", data.sprites.back_default)
-		//- 			 //-   			$("#pokedex2").attr("src", data.sprites.front_default)
-	      	
-		//- 			 //-         	console.log(data)
-		//- 			 //-         },
-		//- 			 //-         error: function(jqXHR, textStatus, errorThrown) {
-		//- 			 //-         	alert("failure, pokemon not found", textStatus);}
-		//- 				//- })				
-		//- 		})
-		//- 	})
+				})
+			})
+
+//- link button met functie, backend moet namen lezen, frontend moet gelezen info ophalen data.finder
