@@ -32,7 +32,9 @@ app.post("/searchbar", function(req,res){
 			} 			
 		} 
 		if (findpers.length == 0){
+
 		res.redirect("/login?e=Incorrect search" ) }	
+
 
 		console.log(findpers[0])
 		res.render("found", {findpers:findpers[0]})
@@ -118,7 +120,7 @@ app.get("/nav", (req,res) => {
 })
 
 app.listen(3000, () =>{
-	console.log("listening")
+	console.log("listening to port 3k")
 });
 
 //koppel button aan app, koppel  button aan jquiry, 
