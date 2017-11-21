@@ -18,7 +18,12 @@ html
 		
 		script.
 			$(document).ready(function(){
+
+				var timenow= Date.now()
 				$("#autocomplete").keyup(function() {
+					if(Date.now()-timenow >= 200){
+					timenow =Date.now()
+						console.log("checking")
 						var query = $("#autocomplete").val();
 						if(query !='')
 							{ 
@@ -36,7 +41,9 @@ html
 							}
 							})
 							}
-
+					}
+					
+					
 				})
 			})
 
